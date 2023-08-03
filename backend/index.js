@@ -6,19 +6,20 @@ const fileUpload = require("express-fileupload");
 const { Configuration, OpenAIApi } = require("openai");
 const pdfParse = require("pdf-parse");
 const rateLimit = require("express-rate-limit");
+require("dotenv").config();
 
 app.use(express.json());
 app.use("/", express.static("public"));
 app.use(fileUpload());
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 const apiLimiter = rateLimit({
   windowMs: 60 * 1000,
   max: 5,
 });
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.OPENAI_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
