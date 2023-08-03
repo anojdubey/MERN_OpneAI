@@ -26,10 +26,13 @@ const FileUploadForm = () => {
     formData.append("phoneNumber", phoneNumber);
     formData.append("file", file);
     try {
-      const response = await fetch("http://localhost:5000/api/upload", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://mern-openai.onrender.com/api/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
       const data = await response.json();
       setUploadStatus("File uploaded successfully");
       setSummary(data.summary);
