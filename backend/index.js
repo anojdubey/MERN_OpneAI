@@ -18,7 +18,7 @@ const apiLimiter = rateLimit({
 });
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
